@@ -1,0 +1,76 @@
+Requirements
+
+- PHP 8.x or later
+- Composer
+- MySQL / MariaDB
+- Laravel 10.x+
+- Postman
+
+Installation Steps
+
+1. Clone the Project
+git clone <your-repo-link>
+cd cms-api
+
+2. Install Dependencies
+composer install
+
+3. Setup .env File
+cp .env.example .env
+Edit .env file for your Database credentials:
+DB
+_
+CONNECTION=mysql
+DB
+HOST=127.0.0.1
+_
+DB
+PORT=3306
+_
+DB
+DB
+DB
+_
+DATABASE=your
+database
+name
+_
+_
+_
+USERNAME=your
+_
+db
+username
+_
+_
+PASSWORD=your
+db
+_
+_password
+
+4. Generate Application Key
+php artisan key:generate
+
+5. Run Migrations & Seeders
+php artisan migrate:fresh --seed
+Seeded User Credentials:
+Email: test@example.com
+Password: password
+
+6. Serve the Project
+php artisan serve
+API is now running at: http://127.0.0.1:8000
+Authentication Flow (Sanctum Token-Based)
+
+1. Login to get a Token
+2. Use Authorization: Bearer <token> in Postman for all protected requests
+Postman API Testing Steps
+1. POST /api/login — Get Token
+2. Use Token for:
+- GET /api/user
+- POST /api/pages
+- GET /api/pages
+- GET /api/pages/{id}
+- PUT /api/pages/{id}
+- DELETE /api/pages/{id}
+3. POST /api/logout — Invalidate Token
